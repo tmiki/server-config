@@ -7,8 +7,6 @@ export LC_ALL=ja_JP.UTF-8
 cd {{app_home}}
 
 
-sed 's/aws.credentials.useInstanceProfile  *\=  *false/aws.credentials.useInstanceProfile = true/' ./src/main/resources/application.store.properties > /tmp/application.store.properties
-sed -i 's/aws.kinesis.streamName = pretest-iotcld-1/aws.kinesis.streamName = test-performance/' /tmp/application.store.properties
 
-exec java -jar ./target/iotcloud-kinesisapp-jar-with-dependencies.jar /tmp/application.store.properties
+# execute a command to run as a foreground daemon.
 
