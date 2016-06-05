@@ -1,0 +1,7 @@
+
+- name: create a group who runs apps
+  group: name={{app_groupname}}
+
+- name: create an user who runs apps
+  user: name={{app_username}} group={{app_groupname}}
+

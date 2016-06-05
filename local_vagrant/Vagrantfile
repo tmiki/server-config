@@ -1,0 +1,22 @@
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "geerlingguy/centos7"
+  config.vm.box_url = "geerlingguy/centos7"
+  config.vm.boot_timeout = 600
+  config.vm.provision :shell, :path => "bootstrap.sh"
+
+ config.vm.synced_folder "../", "/srv/server-config"
+ config.vm.synced_folder "../../", "/home/vagrant/local_workspace"
+
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 2048
+    v.cpus = 1
+  end
+
+  config.vm.network "forwarded_port", guest:22, host:2322
+  config.vm.define :stdap1 do |c1|
+    c1.vm.hostname = stdap1"
+    c1.vm.network :private_network, ip: "192.168.255.11"
+  end
+end

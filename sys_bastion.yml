@@ -1,0 +1,11 @@
+#
+# sys_bastion.yml
+#
+
+- hosts: bastion
+  become: yes
+  roles:
+   - common
+   - { role: common_hosts, when: "ansible_distribution == 'Amazon'" }
+   - common_td-agent
+

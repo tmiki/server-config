@@ -1,0 +1,25 @@
+#
+# Setting up the Supervisord for CentOS 7
+#
+
+- name: supervisor install
+  yum: name=supervisor state=present enablerepo=epel
+
+- name: create a directory which stores the "app_supervisor_script"
+  file: path=/srv/supervisor/bin state=directory recurse=yes owner=root group=root mode=755
+- name: create a directory which stores logs for apps
+  file: path=/var/log/{{app_repository_name}} state=directory recurse=yes owner={{app_username}} group={{app_username}} mode=755
+
+- name: write the supervisord config file
+  template: src=ini.j2 dest=/etc/supervisord.d/{{app_name}}.ini
+#  notify: restart supervisor service
+- name: create the init script
+  template:  src=script.sh.j2 dest=/srv/supervisor/bin/{{app_name}}.sh owner=root group=root mode=755
+#  notify: restart supervisor service
+
+- name: stop supervisor service
+  service: name=supervisord state=stopped enabled=yes
+- name: sleep 10 seconds
+  pause: seconds=10
+- name: start supervisor service
+  service: name=supervisord state=started enabled=yes

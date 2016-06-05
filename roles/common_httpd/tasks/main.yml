@@ -1,0 +1,6 @@
+
+- name: Install Apache2
+  yum: name=httpd state=present update_cache=yes
+- name: Install Apache2 mod_nss
+  yum: name=mod_nss state=present update_cache=yes
+

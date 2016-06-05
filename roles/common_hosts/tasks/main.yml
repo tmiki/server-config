@@ -1,0 +1,19 @@
+#
+# common hosts
+#
+
+- name: get hostname
+  shell: uname -n
+  register: result_hostname
+
+- name: get private ip address
+  shell: ec2-metadata --local-ipv4 | awk '{print $2};'
+  register: result_privateip
+
+- name: get instance-id
+  shell: ec2-metadata --instance-id | awk '{print $2};'
+  register: result_instanceid
+
+- name: add an entry according to this host into /etc/hosts.
+  lineinfile: dest=/etc/hosts state=present line="{{result_privateip.stdout}} {{result_hostname.stdout}}"
+
