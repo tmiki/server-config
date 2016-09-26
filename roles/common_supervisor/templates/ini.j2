@@ -2,7 +2,6 @@
 command=/bin/sh /srv/supervisor/bin/{{app_name}}.sh
 autostart=true
 autorestart=true
-stopsignal=QUIT
 stdout_logfile=/var/log/{{app_repository_name}}/{{app_name}}_console.log
 stderr_logfile=/var/log/{{app_repository_name}}/{{app_name}}_stderr.log
 user={{app_username}}
