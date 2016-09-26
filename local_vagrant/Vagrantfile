@@ -10,13 +10,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
  config.vm.synced_folder "../../", "/home/vagrant/local_workspace"
 
   config.vm.provider "virtualbox" do |v|
-    v.memory = 2048
+    v.memory = 1024
     v.cpus = 1
   end
 
   config.vm.network "forwarded_port", guest:22, host:2322
-  config.vm.define :stdap1 do |c1|
-    c1.vm.hostname = "stdap1"
+  config.vm.define :stdsv1 do |c1|
+    c1.vm.hostname = "stdsv1"
     c1.vm.network :private_network, ip: "192.168.255.11"
   end
 end
