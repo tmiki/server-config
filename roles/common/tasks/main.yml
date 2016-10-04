@@ -7,7 +7,12 @@
    - git
    - jq
    - python-pip
+   - screen
 
 - name: Install auto completion configuration for AWS CLI
   copy: src=aws-cli-bash.sh dest=/etc/profile.d/aws-cli-bash.sh mode=755 owner=root group=root
 
+- name: Configure "screen" for all users 1/2
+  lineinfile: dest=/etc/screenrc regexp="^escape.*" line="escape ^]]"
+- name: Configure "screen" for all users 2/2
+  lineinfile: dest=/etc/screenrc state=present line="termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'"
