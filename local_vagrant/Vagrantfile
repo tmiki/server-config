@@ -7,7 +7,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, :path => "bootstrap.sh"
 
  config.vm.synced_folder "../", "/srv/server-config"
- config.vm.synced_folder "../../", "/home/vagrant/local_workspace"
+ config.vm.synced_folder "../../../shared", "/home/vagrant/shared"
 
   config.vm.provider "virtualbox" do |v|
     v.memory = 1024
