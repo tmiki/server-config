@@ -8,6 +8,7 @@
    - jq
    - python-pip
    - screen
+   - unzip
 
 - name: Install auto completion configuration for AWS CLI
   copy: src=aws-cli-bash.sh dest=/etc/profile.d/aws-cli-bash.sh mode=755 owner=root group=root
