@@ -1,0 +1,28 @@
+#
+# common postgresql role
+#
+- name: Install necessary packages.
+  yum: name={{item}} update_cache=yes
+  with_items:
+   - postgresql
+   - postgresql-server
+
+- name: Check whether PostgreSQL is initialized
+  stat: path={{postgresql_data_dir}}
+  register: pgdatadir
+
+- name: Initialize PostgreSQL
+  command: "sudo -u postgres initdb {{postgresql_data_dir}}"
+  when: pgdatadir.stat.exists == False
+
+- name: Configure PostgreSQL 1/2
+  copy: src=files/postgresql.conf dest={{postgresql_data_dir}}/postgresql.conf owner=postgres group=postgres mode=600
+  notify: reload postgresql service
+
+- name: Configure PostgreSQL 2/2
+  copy: src=files/pg_hba.conf dest={{postgresql_data_dir}}/pg_hba.conf owner=postgres group=postgres mode=600
+  notify: reload postgresql service
+
+- name: Run PostgreSQL
+  service: name=postgresql enabled=yes
+

@@ -13,4 +13,5 @@
    - common_java
    - common_maven3
    - common_httpd
+   - common_postgresql
 
