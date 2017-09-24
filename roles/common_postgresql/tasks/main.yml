@@ -12,17 +12,17 @@
   register: pg_version
 
 - name: Initialize PostgreSQL
-  command: "initdb {{postgresql_data_dir}}"
+  command: "initdb --encoding={{postgresql_encoding}} --locale={{postgresql_locale}} --pgdata={{postgresql_data_dir}}"
   become: true
   become_user: postgres
   when: pg_version.stat.exists == False
 
 - name: Configure PostgreSQL 1/2
-  copy: src=files/postgresql.conf dest={{postgresql_data_dir}}/postgresql.conf owner=postgres group=postgres mode=600
+  copy: src=postgresql.conf dest={{postgresql_data_dir}}/postgresql.conf owner=postgres group=postgres mode=600
   notify: reload postgresql service
 
 - name: Configure PostgreSQL 2/2
-  copy: src=files/pg_hba.conf dest={{postgresql_data_dir}}/pg_hba.conf owner=postgres group=postgres mode=600
+  template: src=pg_hba.conf.j2 dest={{postgresql_data_dir}}/pg_hba.conf owner=postgres group=postgres mode=600
   notify: reload postgresql service
 
 - name: Run PostgreSQL

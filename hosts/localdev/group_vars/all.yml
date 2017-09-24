@@ -2,8 +2,9 @@ env: localdev
 app_username: "app"
 app_groupname: "app"
 app_deploy_target: "master"
-app_java_home: "/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.91-0.b14.el7_2.x86_64"
 
 postgresql_data_dir: /var/lib/pgsql/data
 postgresql_localnetwork: 192.168.255.0/24
+postgresql_encoding: UTF-8
+postgresql_locale: ja_JP.UTF-8
 
