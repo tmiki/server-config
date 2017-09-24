@@ -8,12 +8,14 @@
    - postgresql-server
 
 - name: Check whether PostgreSQL is initialized
-  stat: path={{postgresql_data_dir}}
-  register: pgdatadir
+  stat: path={{postgresql_data_dir}}/PG_VERSION
+  register: pg_version
 
 - name: Initialize PostgreSQL
-  command: "sudo -u postgres initdb {{postgresql_data_dir}}"
-  when: pgdatadir.stat.exists == False
+  command: "initdb {{postgresql_data_dir}}"
+  become: true
+  become_user: postgres
+  when: pg_version.stat.exists == False
 
 - name: Configure PostgreSQL 1/2
   copy: src=files/postgresql.conf dest={{postgresql_data_dir}}/postgresql.conf owner=postgres group=postgres mode=600
