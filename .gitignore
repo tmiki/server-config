@@ -1,3 +1,5 @@
-local_vagrant/.vagrant/*
+/tmp
+.vagrant
 *.retry
+*.swp
 

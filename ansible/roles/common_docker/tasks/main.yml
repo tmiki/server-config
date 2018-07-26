@@ -1,0 +1,10 @@
+#
+# common_docker
+#
+
+- name: Install Docker
+  yum: name={{item}} update_cache=yes
+  with_items:
+   - docker
+  notify: start docker service
+

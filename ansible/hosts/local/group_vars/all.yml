@@ -1,0 +1,27 @@
+env: local
+
+login_user_name: vagrant
+
+docker_username: docker
+docker_groupname: docker
+docker_uid: 1101
+docker_gid: 1101
+
+app_username: app
+app_groupname: app
+app_uid: 1102
+app_gid: 1102
+
+opt_dir: /opt
+oracle_java_home: "{{opt_dir}}/jdk1.8.0_171"
+oracle_java_alternatives_priority: 180171
+oracle_java_distfile: jdk-8u171-linux-x64.tar.gz
+
+app_deploy_target: "master"
+app_java_home: "{{java_home}}"
+
+gradle_home: "{{opt_dir}}/gradle"
+gradle_home_original: "{{opt_dir}}/gradle-4.9"
+gradle_distfile: gradle-4.9-bin.zip
+
+

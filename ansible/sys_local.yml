@@ -1,0 +1,15 @@
+#
+# sys_local.yml
+#
+
+- hosts: local
+  connection: local
+  become: yes
+  roles:
+   - common
+   - common_java
+   - common_gradle4
+   - common_docker
+   - os_users
+   - sys_local
+

@@ -1,0 +1,13 @@
+
+- name: Create a group who runs a Docker container.
+  group: name={{docker_groupname}} gid={{docker_gid}}
+
+- name: Create an user who runs a Docker container.
+  user: name={{docker_username}} group={{docker_groupname}} uid={{docker_uid}}
+
+- name: Create a group who runs apps directly.
+  group: name={{app_groupname}} gid={{app_gid}}
+
+- name: Create an user who runs apps directly.
+  user: name={{app_username}} group={{app_groupname}} uid={{app_uid}}
+
