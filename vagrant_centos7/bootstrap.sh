@@ -7,6 +7,6 @@
 yum install epel-release -y
 yum install net-tools ansible git awscli unzip -y
 
-cd /srv/server-config/ansible/
+cd ./local_workspace/ansible/
 ansible-playbook -v -i hosts/local sys_local.yml
 
