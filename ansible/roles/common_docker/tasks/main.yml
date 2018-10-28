@@ -7,5 +7,5 @@
     name:
      - docker
     update_cache: yes
-    notify: start docker service
+  notify: start docker service
 
