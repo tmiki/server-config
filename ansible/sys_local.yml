@@ -7,6 +7,7 @@
   become: yes
   roles:
    - common
+   - common_httpd
    - common_java
    - common_gradle4
    - common_docker
