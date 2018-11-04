@@ -1,0 +1,12 @@
+#
+# sys_study_networking.yml
+#
+
+- hosts: local
+  connection: local
+  become: yes
+  roles:
+   - common
+   - common_docker
+   - sys_local
+
