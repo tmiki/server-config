@@ -50,7 +50,7 @@
     state: present
     profile: "{{ aws_profile }}"
     zone: "{{ route53zone }}"
-    record: "example-site.{{ route53zone }}"
+    record: "{{ lightsail_wp.site_hostname }}.{{ route53zone }}"
     type: A
     ttl: 300
     value: "{{ _lightsail_static_ip.staticIp.ipAddress }}"

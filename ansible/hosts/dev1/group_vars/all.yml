@@ -11,6 +11,7 @@ az_primary: ap-northeast-1a
 az_secondary: ap-northeast-1c
 
 lightsail_wp:
+  site_hostname: example-site
   blueprint_id: "wordpress_4_9_6"
   bundle_id: "nano_2_0"
   instance_name: "{{env}}-example-site"
