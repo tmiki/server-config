@@ -23,7 +23,6 @@ You can specify the parameter "--key-pair-name" up to you. Please keep the name 
 Needless to say, please also keep the keypair content redirected to the file.
 ```
 $ aws lightsail create-key-pair --key-pair-name dev1-lightsail-keypair > dev1-lightsail-keypair.json
-
 ```
 
 2. Allocate a new Static IP
