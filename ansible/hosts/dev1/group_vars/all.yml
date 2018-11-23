@@ -1,0 +1,19 @@
+---
+env: dev1
+Env: "{{ env.capitalize() }}"
+
+aws_profile: dev1
+
+route53zone: "dev1.your-domain.com"
+
+region: ap-northeast-1
+az_primary: ap-northeast-1a
+az_secondary: ap-northeast-1c
+
+lightsail_wp:
+  blueprint_id: "wordpress_4_9_6"
+  bundle_id: "nano_2_0"
+  instance_name: "{{env}}-example-site"
+  static_ip: "{{env}}-example-site-ip"
+  key_pair_name: "{{env}}-lightsail-keypair"
+

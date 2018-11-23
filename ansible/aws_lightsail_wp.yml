@@ -1,0 +1,10 @@
+#
+# aws_lightsail_wp.yml
+#
+---
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  roles:
+   - aws_lightsail_wp
+

@@ -1,0 +1,58 @@
+#
+# aws_lightsail_wp
+#
+---
+
+- name: Create a Lightsail instance
+  lightsail:
+    state: present
+    name: "{{ lightsail_wp.instance_name }}"
+    profile: "{{ aws_profile }}"
+    region: "{{ region }}"
+    zone: "{{ az_primary }}"
+    blueprint_id: "{{ lightsail_wp.blueprint_id }}"
+    bundle_id: "{{ lightsail_wp.bundle_id }}"
+    key_pair_name: "{{ lightsail_wp.key_pair_name }}"
+    user_data: " echo 'hello world' > /home/ubuntu/test.txt"
+    wait_timeout: 500
+  register: _lightsail_instance
+- debug:
+    var: _lightsail_instance
+- debug:
+    msg:
+     - "Name is {{  _lightsail_instance.instance.name  }}"
+     - "Arn is {{  _lightsail_instance.instance.arn  }}"
+  when: not ansible_check_mode
+
+- name: Retrieve a global IP address from the Static IP 1/2
+  command: "aws lightsail --profile {{aws_profile}} get-static-ip --static-ip-name {{ lightsail_wp.static_ip_name }}"
+  register: _result
+  when: not ansible_check_mode
+
+- name: Retrieve a global IP address from the Static IP 2/2
+  set_fact:
+    _lightsail_static_ip: "{{ _result.stdout | from_json }}"
+  when: not ansible_check_mode
+- debug:
+    var: _lightsail_static_ip
+- debug:
+    msg: "Current static IP is {{ _lightsail_static_ip.staticIp.ipAddress }}"
+  when: not ansible_check_mode
+
+- name: Attach the Static IP with the Lightsail instance
+  command: "aws lightsail --profile {{aws_profile}} attach-static-ip --static-ip-name {{ lightsail_wp.static_ip_name }} --instance-name {{ lightsail_wp.instance_name }}"
+  when:
+   - not ansible_check_mode
+   - _lightsail_instance.instance.is_static_ip != true
+
+- name: Create a Route53 CNAME record points to the static IP address of the Lightsail instance
+  route53:
+    state: present
+    profile: "{{ aws_profile }}"
+    zone: "{{ route53zone }}"
+    record: "example-site.{{ route53zone }}"
+    type: A
+    ttl: 300
+    value: "{{ _lightsail_static_ip.staticIp.ipAddress }}"
+  when: not ansible_check_mode
+
