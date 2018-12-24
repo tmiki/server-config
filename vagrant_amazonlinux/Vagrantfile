@@ -20,6 +20,8 @@ Vagrant.configure("2") do |config|
     c1.vm.network "forwarded_port", guest:8121, host:8121
     c1.vm.network "forwarded_port", guest:8122, host:8122
     c1.vm.network "forwarded_port", guest:8123, host:8123
+    c1.vm.network "forwarded_port", guest:8124, host:8124
+    c1.vm.network "forwarded_port", guest:8125, host:8125
   end
 
   config.ssh.insert_key = false
