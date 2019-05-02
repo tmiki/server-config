@@ -18,3 +18,10 @@
 - name: Configure "screen" for all users 2/2
   lineinfile: dest=/etc/screenrc state=present line="termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'"
 
+- name: Change sshd to accept "PasswordAuthentication"
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: 'PasswordAuthentication .*'
+    line: 'PasswordAuthentication yes'
+    state: present
+  notify: reload sshd service

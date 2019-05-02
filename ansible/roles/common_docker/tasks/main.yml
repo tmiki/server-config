@@ -2,10 +2,18 @@
 # common_docker
 #
 
-- name: Install Docker
-  yum:
-    name:
-     - docker
-    update_cache: yes
-  notify: start docker service
+- name: Install Docker on an Amazon Linux 2
+  include_tasks: setup-AmazonLinux2.yml
+  when:
+    - ansible_distribution == "Amazon" and ansible_service_mgr =='systemd'
 
+- name: Install Docker on except Amazon Linux 2
+  include_tasks: setup-ExceptAmazonLinux2.yml
+  when:
+    - not (ansible_distribution == "Amazon" and ansible_service_mgr =='systemd')
+
+- name: Make login users be able to invoke docker commands
+  user:
+    name: "{{login_user_name}}"
+    groups: "{{docker_groupname}}"
+    append: yes

@@ -1,0 +1,16 @@
+
+- name: Checking whether EPEL is installed via Amazon Linux Extras (Dedicated for Amazon Linux 2)
+  check_mode: no
+  shell: amazon-linux-extras list| egrep 'epel=latest\s+enabled' | wc -l
+  register: _is_epel_installed
+
+- name: Install EPEL via Amazon Linux Extras (Dedicated for Amazon Linux 2)
+  command: amazon-linux-extras install epel
+  when: _is_epel_installed.stdout == "0"
+
+- name: Install Docker on Amazon Linux 2 with yum via EPEL
+  yum:
+    name:
+     - docker
+    update_cache: yes
+  notify: start docker service

@@ -1,0 +1,6 @@
+
+- name: update the password of the user "vagrant"
+  user:
+    name: vagrant
+    password: "$6$cphQW/qC$tcWgwfkeM0f1HnllZC23rMSeg3HAFlinUAIKCbKaTGk8Mpgdiwzsbo8OjSewrl7YzWZapCrka.e5gXRdq3dOP/"
+

@@ -2,14 +2,6 @@
 # sys_local.yml
 #
 
-- name: Change sshd to accept "PasswordAuthentication"
-  lineinfile:
-    path: /etc/ssh/sshd_config
-    regexp: 'PasswordAuthentication .*'
-    line: 'PasswordAuthentication yes'
-    state: present
-  notify: reload sshd service
-
 - name: Make login users be able to invoke docker commands
   user:
     name: "{{login_user_name}}"
