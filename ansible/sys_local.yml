@@ -11,6 +11,7 @@
    - common_java
    - common_gradle4
    - common_docker
+   - user_passwd_vagrant
    - os_users
    - sys_local
 
