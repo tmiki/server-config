@@ -1,7 +1,11 @@
 
 - name: Configure packages' name for AmazonLinux
   include_vars: vars-AmazonLinux.yml
-  when: (ansible_distribution == "Amazon")
+  when: (ansible_distribution == "Amazon" and ansible_service_mgr == "upstart")
+
+- name: Configure packages' name for AmazonLinux 2
+  include_vars: vars-AmazonLinux2.yml
+  when: (ansible_distribution == "Amazon" and ansible_service_mgr == "systemd")
 
 - name: Configure packages' name for CentOS7
   include_vars: vars-CentOS7.yml
