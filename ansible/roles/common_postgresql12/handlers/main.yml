@@ -1,0 +1,4 @@
+
+- name: "Handlers of PostgreSQL 12 for Amazon Linux 2"
+  when: (ansible_distribution == "Amazon" and ansible_service_mgr == "systemd")
+  import_tasks: handler-AmazonLinux2.yml
