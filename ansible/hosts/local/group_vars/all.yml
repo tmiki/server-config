@@ -24,4 +24,5 @@ gradle_home: "{{opt_dir}}/gradle"
 gradle_home_original: "{{opt_dir}}/gradle-4.9"
 gradle_distfile: gradle-4.9-bin.zip
 
+postgresql_trusted_network: 192.168.255.0/24
 
