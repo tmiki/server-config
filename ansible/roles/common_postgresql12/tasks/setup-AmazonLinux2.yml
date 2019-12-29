@@ -45,6 +45,8 @@
     regexp: "host.*all.*all.*{{ postgresql_trusted_network }}"
     line: "host\tall\t\tall\t\t{{ postgresql_trusted_network }}\tmd5"
     backup: yes
+  notify:
+    reload postgresql12 service
 
 - name: Make the PostgreSQL server can be connected with TCP/IP and md5 hash authN via the loopback interface.
   lineinfile:
@@ -52,6 +54,8 @@
     regexp: "host.*all.*all.*127.0.0.1/32.*ident"
     line: "host\tall\t\tall\t\t127.0.0.1/32\t\tmd5"
     backup: yes
+  notify:
+    reload postgresql12 service
 
 - name: Create a PostgerSQL user named "{{ login_user_name }}" for the default OS user.
   become: yes
