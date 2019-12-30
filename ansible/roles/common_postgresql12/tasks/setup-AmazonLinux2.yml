@@ -37,7 +37,7 @@
     line: "listen_addresses = '*'"
     backup: yes
   notify:
-    reload postgresql12 service
+    restart postgresql12 service
 
 - name: Make the PostgreSQL server can be connected with TCP/IP via the VM dedicated local network segment. 2/2.
   lineinfile:
