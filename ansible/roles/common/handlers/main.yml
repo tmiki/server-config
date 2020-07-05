@@ -1,4 +1,5 @@
 
+
 - name: reload sshd service
-  service: name=sshd state=reloaded
+  service: name={{sshd_service_name}} state=reloaded
 

@@ -2,6 +2,15 @@
 # common role
 #
 
+- name: Configure sshd service name for RedHat family
+  include_vars: vars-RedHat.yml
+  when: (ansible_os_family == "RedHat")
+
+- name: Configure sshd service name for Debian family
+  include_vars: vars-Debian.yml
+  when: (ansible_os_family == "Debian")
+
+
 - name: Install necessary packages.
   yum:
     name:
