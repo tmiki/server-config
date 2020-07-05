@@ -4,8 +4,8 @@
     name:
       - docker
       - docker.io
-      - containerd
-      - runc
+      # - containerd
+      # - runc
     update_cache: yes
   notify: start docker service
 
