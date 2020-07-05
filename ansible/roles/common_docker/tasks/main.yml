@@ -10,7 +10,13 @@
 - name: Install Docker on except Amazon Linux 2
   include_tasks: setup-ExceptAmazonLinux2.yml
   when:
-    - not (ansible_distribution == "Amazon" and ansible_service_mgr =='systemd')
+    - not (ansible_distribution == "Amazon" and ansible_service_mgr =='systemd') and (ansible_os_family != 'Debian')
+
+- name: Install Docker on Debian
+  include_tasks: setup-Debian.yml
+  when:
+    - (ansible_os_family == 'Debian')
+
 
 - name: Make login users be able to invoke docker commands
   user:
