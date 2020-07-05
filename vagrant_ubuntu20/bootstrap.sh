@@ -9,4 +9,4 @@ apt install git unzip -y
 apt install ansible -y
 
 cd ./local_workspace/ansible/
-ansible-playbook -v -i hosts/local sys_local_minimum.yml
+ansible-playbook -vvv -i hosts/local sys_local_minimum.yml

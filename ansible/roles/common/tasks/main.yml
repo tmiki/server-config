@@ -34,3 +34,10 @@
     line: 'PasswordAuthentication yes'
     state: present
   notify: reload sshd service
+
+- name: Make default editor vim on Ubuntu
+  alternatives:
+    name: editor
+    path: /usr/bin/vim.basic
+  when: (ansible_os_family == 'Debian' and ansible_distribution == 'Ubuntu')
+
