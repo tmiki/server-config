@@ -1,0 +1,13 @@
+#
+# sys_local_minimum.yml
+#
+
+- hosts: local
+  connection: local
+  become: yes
+  roles:
+  - common
+  - common_docker
+  - os_users
+  - sys_local
+
