@@ -9,4 +9,4 @@ yum install git unzip -y
 yum install ansible -y
 
 cd ./local_workspace/ansible/
-ansible-playbook -v -i hosts/local sys_local.yml
+ansible-playbook -v -i hosts/local sys_local_minimum.yml
