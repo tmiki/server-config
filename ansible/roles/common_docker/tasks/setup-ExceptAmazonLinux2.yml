@@ -1,7 +1,0 @@
-
-- name: Install Docker on except Amazon Linux 2
-  yum:
-    name:
-     - docker
-    update_cache: yes
-  notify: start docker service

@@ -1,11 +1,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "centos/7"
-  config.vm.box = "geerlingguy/centos7"
-  config.vm.box_url = "https://app.vagrantup.com/geerlingguy/centos7"
-  config.vm.box_version = "1.2.9"
-  config.vm.boot_timeout = 600
+  config.vm.box = "bento/centos-7"
   config.vm.provision :shell, :path => "bootstrap.sh"
 
   config.vm.synced_folder "../", "/home/vagrant/local_workspace"
