@@ -1,9 +1,0 @@
-#
-# common postgresql12 role
-#
-
-- name: "Install PostgreSQL 12 for Amazon Linux 2"
-  when: (ansible_distribution == "Amazon" and ansible_service_mgr == "systemd")
-  import_tasks: setup-AmazonLinux2.yml
-
-
