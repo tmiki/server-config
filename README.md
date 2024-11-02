@@ -1,21 +1,24 @@
 
 # Overview
-The collection of Ansible Playbooks which can set up servers automatically.
+This repository provides a couple of Vagrantfile and Ansible playbooks.  
+Once you can build a virtual machine on your PC where Oracle Virtual Box and Vagrant are installed. Then, the virtual machine will be configured automatically by Ansible.
 
 # Description
-Those playbooks run on a CentOS 7 / Amazon Linux instance which runs on your local virtual machine.
-They can also set up remote servers, if you want so.  
+You can run the following OS distributions by making use of Vagrantfiles.  
+The Ansible playbooks also can be run on them.
+
+- Amazon Linux 2023
+- Debian 12
+- Ubuntu 20
+- Ubuntu 22
 
 # Requirement
-## for the Host Environment
-Oracle Virtual Box 5.2.12 (or higher)  
-Vagrant 2.1.1 (Older than 1.9.2 may cause some issues)  
+The following software needs installed on your host PC.
 
-## for the Guest Environment. (They can be installed an Ansible Playbook described below.)
-CentOS 7 / Amazon Linux  
-Ansible 2 (or higher)  
+- Oracle Virtual Box 5.2.12 (or higher)  
+- Vagrant 2.1.1 (Older than 1.9.2 may cause some issues)  
 
-# How to build&configure each servers
+# Usage for Ansible
 ## local development environment
 You can run an Ansible Playbook starts with the "sys\_\*" prefix to configure your local Linux instance.
 
