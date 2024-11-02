@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-# This bootstrap script will be run on an Ubuntu 22.04 LTS instance.
+# This bootstrap script will be run on a Debian 12 instance.
 #
 
 apt-get update -y

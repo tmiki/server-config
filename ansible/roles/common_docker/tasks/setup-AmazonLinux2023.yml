@@ -1,0 +1,8 @@
+# tasks/setup-AmazonLinux2023.yml
+---
+- name: Install required packages
+  dnf:
+    name:
+      - docker
+    state: present
+  notify: start docker service 
