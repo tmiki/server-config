@@ -1,7 +1,0 @@
-
-- include: setup-Amazon.yml
-  when: ansible_distribution == 'Amazon'
-
-- include: setup-CentOS7.yml
-  when: (ansible_distribution == 'CentOS' and ansible_distribution_major_version == "7")
-

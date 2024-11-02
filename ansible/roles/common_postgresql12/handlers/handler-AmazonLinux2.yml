@@ -1,6 +1,0 @@
-
-- name: restart postgresql12 service
-  systemd: name=postgresql-12 state=restarted
-
-- name: reload postgresql12 service
-  systemd: name=postgresql-12 state=reloaded
